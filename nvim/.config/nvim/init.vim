@@ -19,6 +19,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'airblade/vim-gitgutter'
     Plug 'scrooloose/nerdtree'
     Plug 'majutsushi/tagbar'
+    Plug 'junegunn/goyo.vim'
+    Plug 'reedes/vim-wordy'
+    Plug 'reedes/vim-pencil'
 call plug#end()
 
 nnoremap <leader>w       :w!<CR>
