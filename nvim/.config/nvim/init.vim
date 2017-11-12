@@ -22,6 +22,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/goyo.vim'
     Plug 'reedes/vim-wordy'
     Plug 'reedes/vim-pencil'
+    Plug 'lervag/vimtex'
 call plug#end()
 
 nnoremap <leader>w       :w!<CR>
@@ -33,6 +34,7 @@ nnoremap <leader>k       :bn<CR>
 nnoremap <leader><space> :noh<CR>
 nnoremap <space>         za
 nnoremap <leader>n       :NERDTreeToggle<CR>
+nnoremap <leader>r       :Goyo<CR>
 
 " Movement
 nnoremap <C-h>   <C-w>h
@@ -80,13 +82,22 @@ set shiftround
 " Globals
 let g:python3_host_prog                   = '/usr/bin/python'
 let g:loaded_python_provider              = 1
+
 let g:deoplete#enable_at_startup          = 1
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex    = g:vimtex#re#deoplete
+
 let g:airline#extensions#tabline#enabled  = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#branch#enabled   = 1 " Enable branches
 let g:airline_theme                       = 'hybridline'
 let g:hybrid_custom_term_colors           = 1
 let g:NERDTreeShowHidden                  = 1
+let g:goyo_linenr                         = 1
+let g:vimtex_view_method                  = 'zathura'
+let g:vimtex_complete_recursive_bib       = 1
 
 set background=dark
 set termguicolors
@@ -101,6 +112,18 @@ inoremap <silent><expr> <C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <silent><expr> <CR>  pumvisible() ?
             \ deoplete#close_popup() : "<C-g>u<CR>"
 
+function! SetUpTex()
+    call pencil#init()
+endfunction
+function! Goyo_before()
+    call pencil#init()
+endfunction
+let g:goyo_callbacks                      = [function('Goyo_before')]
+
+augroup vimrc_change
+    autocmd!
+    autocmd BufWritePost $MYNVIMRC source $MYNVIMRC
+augroup END
 augroup vimrc_pumclose
     autocmd!
     autocmd InsertLeave,CompleteDone * if pumvisible() | silent! pclose! | endif
@@ -120,4 +143,9 @@ augroup END
 augroup vimrc_javascript
   autocmd!
   autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4
+augroup END
+augroup vimrc_tex
+    autocmd!
+    autocmd BufRead,BufNewFile *.tex set filetype=tex
+    autocmd FileType tex nnoremap <buffer> <leader>lc <plug>(vimtex-compile)
 augroup END
