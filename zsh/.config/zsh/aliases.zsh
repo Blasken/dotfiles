@@ -16,3 +16,10 @@ if command -v colordiff > /dev/null 2>&1; then
 else
     alias diff="diff -Nuar"
 fi
+
+alias dusys='du -x -m -d 2 -a /usr/share --time | sort -n -r | head -n 30'
+
+_dusys()
+{
+    echo '#this is not implemented'
+}
