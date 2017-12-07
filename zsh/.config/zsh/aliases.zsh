@@ -23,3 +23,7 @@ _dusys()
 {
     echo '#this is not implemented'
 }
+
+_better_ls() {
+    echo "$*";
+}
