@@ -34,9 +34,9 @@ set_prompt_color() {
 
 # array of vicmd/viins status signs
 typeset -A zle_prompt_mode
-zle_prompt_mode+=( 'vicmd' "%B%F{blue}N %{$reset_color%}%f%b" )
-zle_prompt_mode+=( 'viins' "%B%F{green}I %{$reset_color%}%f%b" )
-zle_prompt_mode+=( 'main' "%B%F{green}I %{$reset_color%}%f%b" )
+zle_prompt_mode+=( 'vicmd' "%F{114}%B" )
+zle_prompt_mode+=( 'viins' "%B%K{blue}I%{$reset_color%}%k%b" )
+zle_prompt_mode+=( 'main' "%F{039}%B" )
 
 current_mode='vicmd'
 
@@ -46,21 +46,21 @@ function keymap_compat() {
 
 function set_prompt() {
     VI_MODE=${zle_prompt_mode[$KEYMAP]}
-    PROMPT_SHORT_PATH="%U%c %u" #"%U%10<..<%d%<<%u "
-    PROMPT_SIGN="%B%F{green}%{$reset_color%}${at_normal}%f%b "
-    PROMPT="$VI_MODE$PROMPT_SHORT_PATH$PROMPT_SIGN"
+    PROMPT_SHORT_PATH=" %U%c%u %k" #"%U%10<..<%d%<<%u "
+    PROMPT_SIGN="%f%b "
+    PROMPT="$VI_MODE$PROMPT_SIGN"
 }
 
 # allow functions in the prompt
 setopt PROMPT_SUBST
 # PROMPT="%B%F{green}%{$reset_color%}${at_normal}%f%b " # "
 # PROMPT="${zle_prompt_mode[${current_mode}]}%B%F{green}%{$reset_color%}${at_normal}%f%b " # "
-PROMPT="$(keymap_compat)%20<..<%C%<<%B%F{green}%{$reset_color%}${at_normal}%f%b " # "
+PROMPT="$(keymap_compat)%{$reset_color%}${at_normal}%f%b " # "
 RPROMPT="%B%F{green}[ %c\${vcs_info_msg_0_} %(?/${at_normal}/${fg_red})%B%F{green}]%f%b" #%{$fg_no_bold[yellow]%}%?${fg_white}]"
 
 zle-line-init() {
     set_prompt
-    zle -K ${last_mode:-vicmd};
+    zle -K ${last_mode:-main};
 }
 zle -N zle-line-init
 

@@ -23,6 +23,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'reedes/vim-wordy'
     Plug 'reedes/vim-pencil'
     Plug 'lervag/vimtex'
+    Plug 'mhinz/vim-startify'
+    Plug 'mhinz/vim-janah'
 call plug#end()
 
 nnoremap <leader>w       :w!<CR>
@@ -88,20 +90,21 @@ if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
 let g:deoplete#omni#input_patterns.tex    = g:vimtex#re#deoplete
-
+let g:deoplete#sources#jedi#show_docstring = 1
 let g:airline#extensions#tabline#enabled  = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#branch#enabled   = 1 " Enable branches
-let g:airline_theme                       = 'hybridline'
+let g:airline_theme                       = 'deus'
 let g:hybrid_custom_term_colors           = 1
 let g:NERDTreeShowHidden                  = 1
 let g:goyo_linenr                         = 1
 let g:vimtex_view_method                  = 'zathura'
 let g:vimtex_complete_recursive_bib       = 1
 
-set background=dark
+" set background=dark
 set termguicolors
-colorscheme hybrid
+" colorscheme hybrid
+colorscheme janah
 
 inoremap <silent><expr> <Tab>     pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab>   pumvisible() ? "\<C-p>" : "\<S-Tab>"
