@@ -33,7 +33,7 @@ path=(
     "${HOME}/bin"
     "${CUDA_ROOT}/bin"
     "${NPM_PACKAGES}/bin"
-    "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
+#    "$(ruby -rubygems -e 'puts Gem.user_dir')/bin"
     "$path[@]"
 )
 
@@ -105,11 +105,13 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:descriptions' format '%U%F{cyan}%d%f%u'
 
 #tmuxinator completion
-source "${HOME}/.gem/ruby/2.3.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh"
+#source "${HOME}/.gem/ruby/2.3.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh"
 
 # Nobody need flow control anymore. Troublesome feature.
 #stty -ixon
 setopt noflowcontrol
+setopt AUTO_CD
+setopt AUTO_PUSHD
 
 # Keys.
 case $TERM in

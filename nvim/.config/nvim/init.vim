@@ -25,6 +25,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'lervag/vimtex'
     Plug 'mhinz/vim-startify'
     Plug 'mhinz/vim-janah'
+    Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 call plug#end()
 
 nnoremap <leader>w       :w!<CR>
@@ -81,6 +82,9 @@ set softtabstop=4
 set expandtab
 set shiftround
 
+" thesaurus
+set thesaurus+=/home/blomman/.local/share/nvim/mthesaurus.txt
+
 " Globals
 let g:python3_host_prog                   = '/usr/bin/python'
 let g:loaded_python_provider              = 1
@@ -100,6 +104,8 @@ let g:NERDTreeShowHidden                  = 1
 let g:goyo_linenr                         = 1
 let g:vimtex_view_method                  = 'zathura'
 let g:vimtex_complete_recursive_bib       = 1
+let g:vimwiki_list = [{ 'path': '~/library/vimwiki/', 'syntax': 'markdown',
+                     \  'ext': '.md' }]
 
 " set background=dark
 set termguicolors

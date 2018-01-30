@@ -2,6 +2,7 @@
 
 export EDITOR=nvim
 export VISUAL=nvim
+export PLAYER=mplayer
 
 # pip zsh completion start
 function _pip_completion {

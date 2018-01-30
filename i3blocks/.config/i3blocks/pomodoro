@@ -1,0 +1,5 @@
+#!/bin/bash
+POMODORO_FILE=/tmp/pomodoro_time
+echo "Pomodoro"
+echo
+echo \#AF0070
