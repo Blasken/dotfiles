@@ -89,7 +89,7 @@ autoload -U zargs
 setopt promptsubst
 
 
-for config (~/.config/zsh/*.zsh) source $config
+for config ("${ZSHDDIR}"/*.zsh) source $config
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
@@ -113,6 +113,7 @@ setopt noflowcontrol
 setopt AUTO_CD
 setopt AUTO_PUSHD
 
+bindkey -v
 # Keys.
 case $TERM in
     rxvt*|xterm*)

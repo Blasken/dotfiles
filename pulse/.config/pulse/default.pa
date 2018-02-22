@@ -46,7 +46,7 @@ load-module module-card-restore
 ### Automatically load driver modules depending on the hardware available
 # Try with tsched disabled/enabled TODO
 .ifexists module-udev-detect.so
-load-module module-udev-detect
+load-module module-udev-detect ignore_dB=1
 # tsched=0
 .else
 ### Use the static hardware detection module (for systems that lack udev support)

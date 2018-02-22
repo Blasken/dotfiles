@@ -36,8 +36,9 @@ fi
 
 xset b off
 
+xrandr --output DP-0 --primary
 nvidia-settings --load-config-only
-feh --bg-scale ~/Pictures/wp-cred-BlakeNathaniel.png
+#feh --bg-scale ~/Pictures/wp-cred-BlakeNathaniel.png
 #twm &
 #xclock -geometry 50x50-1+1 &
 #xterm -geometry 80x50+494+51 &
@@ -46,4 +47,5 @@ feh --bg-scale ~/Pictures/wp-cred-BlakeNathaniel.png
 #echo running > yesitis
 #export DESKTOP_SESSION=gnome
 
-exec i3
+_launch=${launch:-i3}
+exec $_launch

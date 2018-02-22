@@ -3,6 +3,7 @@
 export EDITOR=nvim
 export VISUAL=nvim
 export PLAYER=mplayer
+alias -s {avi,mpg,mp4,mpeg,mkv,flv,wmv,ogv}=$PLAYER
 
 # pip zsh completion start
 function _pip_completion {

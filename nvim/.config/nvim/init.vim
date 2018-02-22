@@ -57,7 +57,7 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " Display settings
-set number
+set relativenumber
 set scrolloff=9
 set foldcolumn=1
 set cmdheight=2
@@ -104,8 +104,10 @@ let g:NERDTreeShowHidden                  = 1
 let g:goyo_linenr                         = 1
 let g:vimtex_view_method                  = 'zathura'
 let g:vimtex_complete_recursive_bib       = 1
+let g:vimwiki_map_prefix = '<Leader>v'
 let g:vimwiki_list = [{ 'path': '~/library/vimwiki/', 'syntax': 'markdown',
                      \  'ext': '.md' }]
+let python_highlight_all = 1
 
 " set background=dark
 set termguicolors
